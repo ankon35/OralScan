@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OncoDetect | AI Diagnostics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Ambient Glow -->
+    <div class="glow-bg"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">ONCO<span class="highlight">DETECT</span></div>
+            <div class="status-pill">
+                <span class="status-dot"></span> MODEL V.2.0 ACTIVE
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            
+            <!-- Left: Image Handling -->
+            <div class="scan-section">
+                <div class="upload-box" id="uploadBox">
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <svg class="upload-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <h3>Upload Scan</h3>
+                        <p>Drag & Drop or Click to Browse</p>
+                    </div>
+                </div>
+
+                <div class="preview-box" id="previewBox" style="display: none;">
+                    <img id="imagePreview" src="" alt="Scan">
+                    <div class="scanner-overlay" id="scannerOverlay"></div>
+                    <button class="close-btn" onclick="resetUI()">×</button>
+                </div>
+            </div>
+
+            <!-- Right: Analysis Data -->
+            <div class="data-section">
+                <div class="intro-text" id="introText">
+                    <h1>Oral Carcinoma<br>Detection System</h1>
+                    <p>Upload an intraoral photograph. The deep learning model will analyze tissue texture, color irregularities, and lesion boundaries to estimate malignancy risk.</p>
+                </div>
+
+                <div class="analysis-panel" id="analysisPanel" style="display: none;">
+                    <div class="loading-state" id="loadingState">
+                        <div class="loader-bar"></div>
+                        <p class="mono-text">EXTRACTING FEATURES...</p>
+                    </div>
+
+                    <div class="result-state" id="resultState" style="display: none;">
+                        <div class="confidence-score">
+                            <span class="label">AI CONFIDENCE</span>
+                            <span class="value mono-text" id="confidenceValue">0%</span>
+                        </div>
+
+                        <div class="result-readout" id="resultReadout">
+                            <h2 id="resultTitle">NEGATIVE</h2>
+                            <p id="resultDesc">No malignant features detected.</p>
+                        </div>
+
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span>Tissue Irregularity</span>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 20%"></div></div>
+                            </div>
+                            <div class="metric-item">
+                                <span>Lesion Contrast</span>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 45%"></div></div>
+                            </div>
+                        </div>
+
+                        <button class="action-btn" onclick="resetUI()">NEW SCAN</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
