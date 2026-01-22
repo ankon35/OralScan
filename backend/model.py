@@ -38,7 +38,7 @@ try:
     # --- 3. RUN THE PROCESS ---
     
     # Path to your image
-    image_path = "backend/test-image.jpeg" 
+    image_path = "backend/image.png" 
 
     # A. Preprocess the image
     print("Preprocessing image...")
